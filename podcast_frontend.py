@@ -21,12 +21,14 @@ def main():
         body {
            background-color: #ec864b;
            background-color: #206579 !important;
+           background-color: #f7ae52 !important;
         }
 
          /* Applying background color to the header */
         header[data-testid="stHeader"] {
         background-color: #588391 !important;
         background-color: #282828 !important;
+        background-color: #f7ae52 !important;
         }
 
         .stMarkdownContainer {
