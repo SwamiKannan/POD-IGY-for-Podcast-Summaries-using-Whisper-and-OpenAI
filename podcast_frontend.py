@@ -1,5 +1,5 @@
 import streamlit as st
-#import modal
+import modal
 import json
 import os
 
@@ -97,7 +97,7 @@ def main():
         unsafe_allow_html=True,
     )
     st.image('cover2.png', use_column_width=True)
-    st.title("Pod-igy")
+    st.title("Welcome to Pod-igy")
 
     available_podcast_info = create_dict_from_json_files('.')
 
@@ -161,12 +161,11 @@ def main():
         podcast_info = process_podcast_info(url)
 
         # Right section - Newsletter content
-        st.header("Your Podcast Content ... available now !")
+        st.header("Newsletter Content")
 
         # Display the podcast title
         st.subheader("Episode Title")
         st.write(podcast_info['podcast_details']['episode_title'])
-
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
@@ -175,11 +174,9 @@ def main():
             # Display the podcast episode summary
             st.subheader("Podcast Episode Summary")
             st.write(podcast_info['podcast_summary'])
- 
 
         with col2:
             st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
-        
 
         # Display the podcast guest and their details in a side-by-side layout
         col3, col4 = st.columns([3, 7])
@@ -191,7 +188,6 @@ def main():
         with col4:
             st.subheader("Podcast Guest Details")
             st.write(podcast_info["podcast_guest"]['summary'])
-            
 
         # Display the five key moments
         st.subheader("Key Moments")
@@ -221,4 +217,3 @@ def process_podcast_info(url):
 
 if __name__ == '__main__':
     main()
-
