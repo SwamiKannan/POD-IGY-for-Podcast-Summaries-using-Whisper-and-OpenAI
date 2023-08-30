@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-#import modal
+import modal
 import json
 import os
 
@@ -266,9 +266,8 @@ def create_dict_from_json_files(folder_path):
     return data_dict
 
 def process_podcast_info(url):
-    #f = modal.Function.lookup("corise-podcast-project", "process_podcast")
-    #output = f.call(url, '/content/podcast/')
-    output='Swaminathan'
+    f = modal.Function.lookup("corise-podcast-project", "process_podcast")
+    output = f.call(url, '/content/podcast/')
     return output
 
 if __name__ == '__main__':
