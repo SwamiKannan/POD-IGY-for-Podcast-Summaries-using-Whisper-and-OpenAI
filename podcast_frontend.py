@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import modal
 import json
 import os
@@ -10,19 +11,22 @@ def main():
         <style>
        /* The main content area */
         .main .block-container {
-            margin-top:15em;
+            margin-top:25em;
             background-color: #206579 !important;
+            background-color: #282828 !important;
             color : #fff !important;
         }
         
         /* The background of the entire body */
         body {
            background-color: #ec864b;
+           background-color: #206579 !important;
         }
 
          /* Applying background color to the header */
         header[data-testid="stHeader"] {
         background-color: #588391 !important;
+        background-color: #282828 !important;
         }
 
         .stMarkdownContainer {
@@ -36,11 +40,13 @@ def main():
             overflow: auto;
             align-items: center;
             background-color: #588391;
+            background-color: #282828 !important;
         }
 
         /* Making the content and sidebar background completely opaque */
         div.stButton > button:first-child {
             background-color: #206579;
+            background-color: #282828 !important;
             color : #fff !important;
             border : none;
             
@@ -88,7 +94,6 @@ def main():
         
             display: block;
             margin: 0 auto;
-            /* padding: 15em;*/
             border: 5em ;
             padding-top: 15em;
             
@@ -111,6 +116,7 @@ def main():
 
         .sidebar.header{
         color: #206579; /* Replace with your desired color */
+        color: #282828 !important;
         }
         
                
@@ -124,8 +130,8 @@ def main():
     
     st.title("Welcome to Swami's Pod-igy !")
     st.image('cover2.png', use_column_width=True)
-    
-    
+    components.html( "<br><br> ",height=250)
+
 
     available_podcast_info = create_dict_from_json_files('.')
 
