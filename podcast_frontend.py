@@ -113,7 +113,7 @@ def main():
         podcast_info = available_podcast_info[selected_podcast]
 
         # Right section - Newsletter content
-        st.header("New Podcast Content")
+        st.header("Podcast Content")
 
         # Display the podcast title
         st.subheader("Episode Title")
