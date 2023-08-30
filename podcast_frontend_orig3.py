@@ -55,17 +55,11 @@ def main():
             text-align:center;
             margin-top:1em;
             color : #ec864b;
-            text-shadow: 1px 1px 2px #444444;
-            font-family: sans-serif;
-            color : #ffffff;
         }
 
         h2 {
             color : #00e4ff;
-            padding-top: 1em;
-            color : #8ef3ff;
-            text-shadow: 2px 2px 2px #444444;
-            
+            padding-top: 2em;
         }
 
         h3 {
@@ -88,8 +82,8 @@ def main():
         
             display: block;
             margin: 0 auto;
-            /* padding: 15em;*/
-            border: 5em ;
+            padding: 15em;
+            border: 15em ;
             padding-top: 15em;
             
         }
@@ -113,6 +107,10 @@ def main():
         color: #206579; /* Replace with your desired color */
         }
         
+        st.image {
+        padding-top: 5px solid #FFF;
+        
+        }
                
         </style>
         """,
@@ -144,6 +142,8 @@ def main():
     st.sidebar.markdown("**Note**: Podcast processing can take upto 5 mins, please be patient.")
     
     if process_button:
+    
+        selected_podcast = None
 
         # Call the function to process the URLs and retrieve podcast guest information
         podcast_info = process_podcast_info(url)
@@ -229,6 +229,14 @@ def main():
         for moment in key_moments.split('\n'):
             st.markdown(
                 f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
+
+
+    
+    
+
+    
+
+    
 
 def create_dict_from_json_files(folder_path):
     json_files = [f for f in os.listdir(folder_path) if f.endswith('.json')]
