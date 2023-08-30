@@ -1,12 +1,10 @@
 import streamlit as st
 import streamlit.components.v1 as components
-#import modal
+import modal
 import json
 import os
 
 def main():
-
-
 
     st.markdown(
         """
@@ -14,17 +12,22 @@ def main():
        /* The main content area */
         .main .block-container {
             margin-top:25em;
-            color : #fff !important;
             background-color: #206579 !important;
+            background-color: #282828 !important;
+            color : #fff !important;
         }
         
         /* The background of the entire body */
         body {
+           background-color: #ec864b;
+           background-color: #206579 !important;
            background-color: #f7ae52 !important;
         }
 
          /* Applying background color to the header */
         header[data-testid="stHeader"] {
+        background-color: #588391 !important;
+        background-color: #282828 !important;
         background-color: #f7ae52 !important;
         }
 
@@ -38,19 +41,20 @@ def main():
             width: 100%;
             overflow: auto;
             align-items: center;
-            background-color: #f7ae52 !important;
+            background-color: #588391;
+            background-color: #282828 !important;
         }
 
         /* Making the content and sidebar background completely opaque */
         div.stButton > button:first-child {
-            background-color: #f7ae52 !important;
-
+            background-color: #206579;
+            background-color: #282828 !important;
             color : #fff !important;
             border : none;
             
         }
         div[data-baseweb="select"] > div {
-            background-color: #206579 ; 
+            background-color: #206579 ;
             color : #fff;
            
         }
@@ -58,28 +62,26 @@ def main():
         h1{
             text-align:center;
             margin-top:1em;
+            color : #ec864b;
             text-shadow: 1px 1px 2px #444444;
             font-family: sans-serif;
             color : #ffffff;
         }
 
         h2 {
+            color : #00e4ff;
             padding-top: 1em;
             color : #8ef3ff;
             text-shadow: 2px 2px 2px #444444;
-            color : #f7ae52;
-            
             
         }
 
         h3 {
-            color : #9c0000
-            color: #00deff !important;
+            color : #97e8ff
         }
 
         p {
-            color : #383838;
-            text-shadow : horizontal-shadow vertical-shadow blur color;
+            color : #d2d2d2;
         }
         
         /* Remove padding/margin from top element in the main section */
@@ -99,31 +101,26 @@ def main():
             
         }
         
-        stHeader h2{
+        stHeader h2 {
             padding: 5em;
         }
 
         .css-6qob1r.e1fqkh3o3 {
+        background-color: #588391;
         color: #fff !important;
-        background-color: #f7ae52 !important;
         }
         
         .css-6qob1r.eczjsme3{
         background-color: #588391;
         color: #fff !important;
-        background-color: #ffe9ce !important;
-
         }
         
 
         .sidebar.header{
-        color: #383838 !important;
+        color: #206579; /* Replace with your desired color */
+        color: #282828 !important;
         }
         
-        .sidebar.text_input{
-            color: #383838 !important;
-        }
-
                
         </style>
         """,
@@ -135,7 +132,7 @@ def main():
     
     st.title("Welcome to Swami's Pod-igy !")
     st.image('cover2.png', use_column_width=True)
-    components.html( "<br><br> ",height=50)
+    components.html( "<br><br> ",height=250)
 
 
     available_podcast_info = create_dict_from_json_files('.')
@@ -144,13 +141,12 @@ def main():
     st.sidebar.header("Podcast RSS Feeds")
 
     # Dropdown box
-                
     st.sidebar.subheader("Available Podcasts Feeds")
-    selected_podcast = st.sidebar.selectbox("**Select Podcast**", options=['Select a podcast']+list(available_podcast_info.keys()))
+    selected_podcast = st.sidebar.selectbox("Select Podcast", options=['Select a podcast']+list(available_podcast_info.keys()))
     
      # User Input box
     st.sidebar.subheader("Add and Process New Podcast Feed")
-    url = st.sidebar.text_input("**Link to RSS Feed**")
+    url = st.sidebar.text_input("Link to RSS Feed")
 
     process_button = st.sidebar.button("Process Podcast Feed")
     st.sidebar.markdown("**Note**: Podcast processing can take upto 5 mins, please be patient.")
@@ -211,9 +207,7 @@ def main():
 
         # Display the podcast title
         st.subheader("Episode Title")
-        st.markdown(
-                f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_details']['episode_title']}</p>", unsafe_allow_html=True)
-        #st.write(podcast_info['podcast_details']['episode_title'])
+        st.write(podcast_info['podcast_details']['episode_title'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
@@ -221,9 +215,7 @@ def main():
         with col1:
             # Display the podcast episode summary
             st.subheader("Podcast Episode Summary")
-            st.markdown(
-                f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_summary']}</p>", unsafe_allow_html=True)
-            #st.write(podcast_info['podcast_summary'])
+            st.write(podcast_info['podcast_summary'])
 
         with col2:
             st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
@@ -233,23 +225,18 @@ def main():
 
         with col3:
             st.subheader("Podcast Guest")
-            st.markdown(
-                f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_guest']['name']}</p>", unsafe_allow_html=True)
-            #st.write(podcast_info['podcast_guest']['name'])
+            st.write(podcast_info['podcast_guest']['name'])
 
         with col4:
             st.subheader("Podcast Guest Details")
-            st.markdown(
-                f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_guest']['summary']}</p>", unsafe_allow_html=True)
-            #st.write(podcast_info["podcast_guest"]['summary'])
+            st.write(podcast_info["podcast_guest"]['summary'])
 
         # Display the five key moments
         st.subheader("Key Moments")
         key_moments = podcast_info['podcast_highlights']
         for moment in key_moments.split('\n'):
             st.markdown(
-                f"<p style='margin-bottom: 5px;color: #ededed'>{moment}</p>", unsafe_allow_html=True)
-   
+                f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
 
 def create_dict_from_json_files(folder_path):
     json_files = [f for f in os.listdir(folder_path) if f.endswith('.json')]
@@ -266,9 +253,8 @@ def create_dict_from_json_files(folder_path):
     return data_dict
 
 def process_podcast_info(url):
-    #f = modal.Function.lookup("corise-podcast-project", "process_podcast")
-    #output = f.call(url, '/content/podcast/')
-    output='Swaminathan'
+    f = modal.Function.lookup("corise-podcast-project", "process_podcast")
+    output = f.call(url, '/content/podcast/')
     return output
 
 if __name__ == '__main__':
