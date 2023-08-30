@@ -202,7 +202,7 @@ def main():
         key_moments = podcast_info['podcast_highlights']
         for moment in key_moments.split('\n'):
             st.markdown(
-                f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
+                f"<p style='margin-bottom: 5px;color: #ededed'>{moment}</p>", unsafe_allow_html=True)
     
     elif selected_podcast in available_podcast_info.keys():
 
