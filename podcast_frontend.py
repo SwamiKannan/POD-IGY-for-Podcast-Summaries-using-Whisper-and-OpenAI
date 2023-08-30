@@ -165,7 +165,8 @@ def main():
 
         # Display the podcast title
         st.subheader("Episode Title")
-        st.write(podcast_info['podcast_details']['episode_title'])
+        st.markdown(
+                f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_details']['episode_title']}</p>", unsafe_allow_html=True)
 
 
         # Display the podcast summary and the cover image in a side-by-side layout
@@ -174,7 +175,8 @@ def main():
         with col1:
             # Display the podcast episode summary
             st.subheader("Podcast Episode Summary")
-            st.write(podcast_info['podcast_summary'])
+            st.markdown(
+                f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_summary']}</p>", unsafe_allow_html=True)
  
 
         with col2:
@@ -186,7 +188,8 @@ def main():
 
         with col3:
             st.subheader("Podcast Guest")
-            st.write(podcast_info['podcast_guest']['name'])
+            st.markdown(
+                f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_guest']['name']}</p>", unsafe_allow_html=True)
 
         with col4:
             st.subheader("Podcast Guest Details")
