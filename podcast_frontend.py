@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-#import modal
+import modal
 import json
 import os
 
@@ -193,7 +193,8 @@ def main():
 
         with col4:
             st.subheader("Podcast Guest Details")
-            st.write(podcast_info["podcast_guest"]['summary'])
+            st.markdown(
+                f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_guest']['summary']}</p>", unsafe_allow_html=True)
             
 
         # Display the five key moments
@@ -216,7 +217,6 @@ def main():
         st.subheader("Episode Title")
         st.markdown(
                 f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_details']['episode_title']}</p>", unsafe_allow_html=True)
-        #st.write(podcast_info['podcast_details']['episode_title'])
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
@@ -226,7 +226,6 @@ def main():
             st.subheader("Podcast Episode Summary")
             st.markdown(
                 f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_summary']}</p>", unsafe_allow_html=True)
-            #st.write(podcast_info['podcast_summary'])
 
         with col2:
             st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
@@ -238,13 +237,11 @@ def main():
             st.subheader("Podcast Guest")
             st.markdown(
                 f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_guest']['name']}</p>", unsafe_allow_html=True)
-            #st.write(podcast_info['podcast_guest']['name'])
 
         with col4:
             st.subheader("Podcast Guest Details")
             st.markdown(
                 f"<p style='margin-bottom: 5px;color: #ededed'>{podcast_info['podcast_guest']['summary']}</p>", unsafe_allow_html=True)
-            #st.write(podcast_info["podcast_guest"]['summary'])
 
         # Display the five key moments
         st.subheader("Key Moments")
@@ -269,9 +266,8 @@ def create_dict_from_json_files(folder_path):
     return data_dict
 
 def process_podcast_info(url):
-    #f = modal.Function.lookup("corise-podcast-project", "process_podcast")
-    #output = f.call(url, '/content/podcast/')
-    output='Swaminathan'
+    f = modal.Function.lookup("corise-podcast-project", "process_podcast")
+    output = f.call(url, '/content/podcast/')
     return output
 
 if __name__ == '__main__':
