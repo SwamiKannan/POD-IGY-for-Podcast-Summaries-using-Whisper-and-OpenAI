@@ -161,11 +161,10 @@ def main():
         podcast_info = process_podcast_info(url)
 
         # Right section - Newsletter content
-        st.header("Podcast Content")
+        st.header("Your Podcast Content ... available now !")
 
         # Display the podcast title
         st.subheader("Episode Title")
-        
         st.write(podcast_info['podcast_details']['episode_title'])
 
 
