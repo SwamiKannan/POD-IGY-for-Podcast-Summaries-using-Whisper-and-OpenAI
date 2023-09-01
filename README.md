@@ -10,7 +10,9 @@ Pod-igy was built as an end-to-end transcription-cum-summarization tool for podc
 2. **Models used**: Whisper , OpenAI's gpt-turbo-3.5
 3. **Backend hosted** on modal and **frontend** on Streamlit share.
 
-
+## Requirements:
+ 1. OpenAI key
+ 2. Modal token id and token secret
 
 ## Demo:
 <p align = 'center'>
