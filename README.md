@@ -7,7 +7,7 @@ Pod-igy was built as an end-to-end transcription-cum-summarization tool for podc
 ## Key Details:
 
 1. The frontend of the app was designed with **Streamlit**.
-2. **Models used**: <a href="https://openai.com/research/whisper>"Whisper</a> , OpenAI's gpt-turbo-3.5
+2. **Models used**: <a href="https://openai.com/research/whisper">Whisper</a> , OpenAI's gpt-turbo-3.5
 3. **Backend hosted** on <a href="https://modal.com/">Modal</a> and **frontend** on <a href="https://share.streamlit.io/">Streamlit share</a>.
 
 ## Requirements:
