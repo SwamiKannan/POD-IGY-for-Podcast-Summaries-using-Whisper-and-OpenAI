@@ -10,3 +10,4 @@ Models used: Whisper , OpenAI's gpt-turbo-3.5
 
 Backend hosted on modal and frontend on Streamlit share.
 
+[![App demo](https://img.youtube.com/vi/BJRfJ-0SlVM/0.jpg)](https://www.youtube.com/watch?v=BJRfJ-0SlVM)
